@@ -2,9 +2,12 @@
 {
     internal class Program
     {
+        static void InfoDisplay()
+        {
+        }
         static void Main(string[] args)
         {
-            //GitClone占位
+            InfoDisplay();
         }
     }
 }
