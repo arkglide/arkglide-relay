@@ -53,10 +53,42 @@ namespace arkglide_relay
                     { cmdBlock.Append(item); continue; }
                 }
                 Command.Add(cmdBlock.ToString());
+                List<string> cmdExe = new();
+                for(int i=0;i<Command.Count;i++)
+                {
+                    if (Command[i].Length == 0) continue;
+                    if(i==Command.Count-1)
+                    {
+                        if(Command.Last()!=">")cmdExe.Add(Command[i]);
+                        Run(cmdExe.ToArray());
+                        cmdExe.Clear();
+                        break;
+                    }
+                    if (Command[i] == ">")
+                    {
+                        if (cmdExe.Count == 0)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("error token");
+                        }
+                        ConnectStream=Run(cmdExe.ToArray());
+                        cmdExe.Clear();
+                        continue;
+                    }
+                    cmdExe.Add(Command[i]);
+                }
+            }
+        }
+        private string ConnectStream = string.Empty;
+        private string Run(string[] cmds)
+        {
+            switch (cmds[0])
+            {
 
             }
         }
-        
-        private void ExitServer() { }
+        private void ExitServer() {
+            //to do
+        }
     }
 }
