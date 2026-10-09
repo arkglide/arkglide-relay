@@ -12,10 +12,22 @@ namespace arkglide_relay
         public int RoomId { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
-        public List<Player> Players { get; set; }
+        public List<Player> Players = new List<Player>();
         public List<string>? Ident {  get; set; }
+        public int? MaxPlayers { get; set; }
         public int Level { get; set; }
         public List<string>? Data { get; set; }
+        private Rooms _Rooms;
+        public Room(Rooms rooms) { _Rooms = rooms; }
+        public Rooms GetRooms()
+        { return _Rooms; }
+        public Room Accept(Player _player)
+        {
+            if (MaxPlayers != null&&Players.Count >= MaxPlayers) {
+                return GetRooms().CreateRoom().Accept(_player);
+            }
+            return this;
+        }
     }
     public class Player
     {

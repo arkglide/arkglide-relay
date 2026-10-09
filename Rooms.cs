@@ -8,6 +8,12 @@ namespace arkglide_relay
 {
     public class Rooms
     {
-        
+        private List<Room> _Rooms=new List<Room>();
+        public Room CreateRoom()
+        {
+            var room=new Room(this);
+            _Rooms.Add(room);
+            return room;
+        }
     }
 }
