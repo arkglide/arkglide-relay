@@ -7,7 +7,5 @@ using System.Threading.Tasks;
 namespace arkglide_relay
 {
     public static class JSExecute
-    {
-
-    }
+    {    }
 }

@@ -17,6 +17,7 @@ namespace arkglide_relay
         public int? MaxPlayers { get; set; }
         public int Level { get; set; }
         public List<string>? Data { get; set; }
+        public JSValue jsValue { get; set; }
         private Rooms _Rooms;
         public Room(Rooms rooms) { _Rooms = rooms; }
         public Rooms GetRooms()

@@ -9,6 +9,7 @@ namespace arkglide_relay
     public class Rooms
     {
         private List<Room> _Rooms=new List<Room>();
+        public _WebSocket GetSocket {  get; set; }
         public Room CreateRoom()
         {
             var room=new Room(this);

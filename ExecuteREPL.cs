@@ -82,8 +82,7 @@ namespace arkglide_relay
         private string ConnectStream = string.Empty;
         private string Run(string[] cmds)
         {
-            Rooms rooms = new Rooms();
-            rooms.CreateRoom().Accept().GetRoom();
+
         }
         private void ExitServer() {
             //to do
