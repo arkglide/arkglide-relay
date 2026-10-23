@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace arkglide_relay
 {
-    public class ServerEnity{ }
+    public class ServerEnity{
+        public JSExecute Execute {  get; set; }
+        public List<Rooms> TRooms { get; set; }
+        public _WebSocket SocketSvr {get; set;}
+    }
+    public class ServerList
+    {
+        private List<ServerEnity> _serverEnities = new List<ServerEnity>();
+
+        public ServerList AddServerEnity(ServerEnity serverEnity)
+        {
+            _serverEnities.Add(serverEnity);
+            return this;
+        }
+    }
     public class Room
     {
         public int RoomId { get; set; }

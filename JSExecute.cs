@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace arkglide_relay
 {
-    public static class JSExecute
+    public class JSExecute
     {
-        public static string _scriptPath = "script,js";
-        private static Engine _JSengine = new Engine();
-        public static Engine Post()
+        public string _scriptPath = "script,js";
+        private Engine _JSengine = new Engine();
+        public Engine Post()
         =>_JSengine.Execute(File.ReadAllText(_scriptPath)??throw new Exception("E-JS:FileTextEmpty"));
         
     }
