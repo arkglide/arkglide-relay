@@ -6,7 +6,7 @@ namespace arkglide_relay
 {
     public class JSExecute
     {
-        private string _scriptPath = "script.js"; // 修复了你的逗号
+        private string _scriptPath = "script.js"; // 修复了逗号
         public Engine _JSengine { get; private set; }
 
         public JSExecute()
@@ -30,12 +30,15 @@ namespace arkglide_relay
         // 核心分发器
         public Jint.Native.JsValue Dispatch(string hookName, params object[] args)
         {
+            // 先检查函数是否存在
             var func = _JSengine.GetValue(hookName);
             if (!func.IsCallable()) return Jint.Native.JsValue.Undefined;
 
             try
             {
-                return func.Call(args);
+                // 使用 Engine.Invoke，它会自动处理 object[] 到 JS 参数的转换
+                // 注意：如果参数里面包含 null，Jint 也能安全处理
+                return _JSengine.Invoke(hookName, args);
             }
             catch (Exception ex)
             {
